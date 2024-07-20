@@ -1,18 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Main : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("Hello World");
+public class Main : MonoBehaviour {
+
+    Context ctx;
+    bool isTearDown = false;
+    void Awake() {
+
+        // new 
+        ctx = new Context();
+
+        Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+
+        ModuleAssets.Load(ctx.assets);
+        // inject
+        ctx.Inject(canvas);
+
+
+
+        UIApp.Panel_Bag_Opne(ctx.UIContext);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
+    }
+     void OnDestory() {
+        TearDown();
+    }
+
+    void OnApplicationQuit() {
+        TearDown();
+    }
+
+    void TearDown() {
+        if (isTearDown) {
+            return;
+        }
+        isTearDown = true;
+        // === Unload===
+        ModuleAssets.Unload(ctx.assets);
     }
 }
