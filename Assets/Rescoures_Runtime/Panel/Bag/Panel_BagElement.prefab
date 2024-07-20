@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+  imgicon: {fileID: 8014384119980294739}
+  txtCount: {fileID: 1548030156216948817}
 --- !u!1 &7101697487938638616
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,4 +24,15 @@ public static class UIApp {
         panel.Show();
 
     }
+
+
+    public static void Panel_BagElement_Add(UIContext ctx, int id, Sprite icon, int count) {
+        Panel_Bag panel = ctx.panel_Bag;
+        if (panel == null) {
+            Debug.LogError("Panel_Bag not found");
+            return;
+        }
+
+        panel.Add(id, icon, count);
+    }
 }
