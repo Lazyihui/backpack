@@ -20,10 +20,10 @@ public class Main : MonoBehaviour {
 
 
 
-        UIApp.Panel_Bag_Opne(ctx.UIContext);
-        for (int i = 0; i < 100; i++) {
-            UIApp.Panel_BagElement_Add(ctx.UIContext, i, null, 5);
-        }
+        UIApp.Panel_Bag_Opne(ctx.UIContext, 100);
+        // for (int i = 0; i < 100; i++) {
+        //     UIApp.Panel_BagElement_Add(ctx.UIContext, i, null, 5);
+        // }
     }
 
     void Update() {

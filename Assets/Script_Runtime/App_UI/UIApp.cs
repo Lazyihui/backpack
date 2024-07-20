@@ -4,7 +4,7 @@ using UnityEngine;
 public static class UIApp {
     // --bag
 
-    public static void Panel_Bag_Opne(UIContext ctx) {
+    public static void Panel_Bag_Opne(UIContext ctx,int maxSlot) {
         Panel_Bag panel = ctx.panel_Bag;
 
         if (panel == null) {
@@ -22,6 +22,7 @@ public static class UIApp {
         }
 
         panel.Show();
+        panel.Init(maxSlot);
 
     }
 

@@ -16,6 +16,11 @@ public class Panel_BagElement : MonoBehaviour {
     public void Init(int id, Sprite icon, int count) {
         this.id = id;
         this.imgicon.sprite = icon;
-        this.txtCount.text = count.ToString();
+        if (count <= 0) {
+            this.txtCount.text = null;
+        } else {
+            this.txtCount.text = count.ToString();
+
+        }
     }
 }
