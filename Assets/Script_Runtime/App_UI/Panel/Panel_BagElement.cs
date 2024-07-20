@@ -8,9 +8,13 @@ public class Panel_BagElement : MonoBehaviour {
 
     [SerializeField] Image imgicon;
     [SerializeField] Text txtCount;
+    [SerializeField] Button btnUse;
 
+    public Action<int> OnUseHandle;
     public void Ctor() {
-
+         btnUse.onClick.AddListener(() => {
+            OnUseHandle.Invoke(id);
+        });
     }
 
     public void Init(int id, Sprite icon, int count) {

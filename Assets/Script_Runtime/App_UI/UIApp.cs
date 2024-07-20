@@ -4,7 +4,7 @@ using UnityEngine;
 public static class UIApp {
     // --bag
 
-    public static void Panel_Bag_Opne(UIContext ctx,int maxSlot) {
+    public static void Panel_Bag_Opne(UIContext ctx, int maxSlot) {
         Panel_Bag panel = ctx.panel_Bag;
 
         if (panel == null) {
@@ -16,8 +16,11 @@ public static class UIApp {
 
             GameObject go = GameObject.Instantiate(prefab, ctx.canvas.transform);
             panel = go.GetComponent<Panel_Bag>();
-            panel.Ctor();
 
+            panel.Ctor();
+            panel.OnUseHandle = (id) => {
+                ctx.uiEvent.OnUseHandle(id);
+            };
             ctx.panel_Bag = panel;
         }
 

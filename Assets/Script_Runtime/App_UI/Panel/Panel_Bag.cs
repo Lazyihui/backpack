@@ -12,24 +12,41 @@ public class Panel_Bag : MonoBehaviour {
 
     List<Panel_BagElement> elements;
 
+
+    public Action<int> OnUseHandle;
     public int id;
 
 
     public void Init(int maxSlot) {
         for (int i = 0; i < maxSlot; i++) {
             Panel_BagElement ele = GameObject.Instantiate(prefabElement, group.transform);
-            ele.Init(i, null, 0);
+            ele.Ctor();
+            ele.Init(-1, null, 0);
+
+            ele.OnUseHandle = OnUse;
+
             elements.Add(ele);
+
         }
 
+    }
+
+    void OnUse(int id) {
+        OnUseHandle.Invoke(id);
     }
     public void Ctor() {
         elements = new List<Panel_BagElement>();
     }
     // 添加物品
     public void Add(int id, Sprite icon, int count) {
-        // ele.Ctor();
-        // ele.Init(id, null, count);
+        for (int i = 0; i < elements.Count; i++) {
+
+            Panel_BagElement ele = elements[i];
+            if (ele.id == -1) {
+                ele.Init(id, icon, count);
+                break;
+            }
+        }
     }
 
     // 移除物品
