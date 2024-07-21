@@ -15,6 +15,11 @@ public static class RoleDomain {
         RoleEntity entity = go.GetComponent<RoleEntity>();
         entity.id = id;
         entity.Ctor();
+        entity.Init(16);
+
+        int occupiedSlot = entity.bag.GetOccupiedSlot();
+        Debug.Log("RoleEntity Spawned, id:" + entity.id + " occupiedSlot:" + occupiedSlot);
+
         return entity;
 
 
