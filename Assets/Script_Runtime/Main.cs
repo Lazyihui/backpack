@@ -12,6 +12,7 @@ public class Main : MonoBehaviour {
         // new 
         ctx = new Context();
 
+
         Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
 
         ModuleAssets.Load(ctx.assets);
@@ -19,6 +20,7 @@ public class Main : MonoBehaviour {
         ctx.Inject(canvas);
 
 
+        RoleDomain.Spawn(ctx.gameContext, 1);
 
         UIApp.Panel_Bag_Opne(ctx.UIContext, 100);
         for (int i = 0; i < 10; i++) {

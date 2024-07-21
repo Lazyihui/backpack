@@ -29,6 +29,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Panels
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d941a6b9c14362249a0e0b37bdfcc47a
+    m_Address: Assets/Rescoures_Runtime/Panel/Entity/RoleEntity.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Entities
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 617f26ae982655946867f687912cd4f9, type: 2}
   m_SchemaSet:
