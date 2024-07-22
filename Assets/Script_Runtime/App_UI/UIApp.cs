@@ -29,6 +29,16 @@ public static class UIApp {
 
     }
 
+    public static void Bag_Close(UIContext ctx) {
+        Panel_Bag panel = ctx.panel_Bag;
+        if (panel == null) {
+            return;
+        }
+
+        panel.Close();
+        ctx.panel_Bag = null;
+    }
+
 
     public static void Panel_BagElement_Add(UIContext ctx, int id, Sprite icon, int count) {
         Panel_Bag panel = ctx.panel_Bag;

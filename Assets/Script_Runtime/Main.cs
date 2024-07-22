@@ -22,7 +22,6 @@ public class Main : MonoBehaviour {
 
         RoleEntity role = RoleDomain.Spawn(ctx.gameContext, 1);
 
-        BagDomaim.OpenBag(ctx.gameContext, role.bag);
         Binding();
     }
     void Binding() {
@@ -33,13 +32,22 @@ public class Main : MonoBehaviour {
         };
     }
     void Update() {
+
+
         ctx.moduleInput.Process();
 
         int lenRole = ctx.gameContext.roleRespository.TakeAll(out RoleEntity[] roles);
-        for (int i = 0; i < lenRole; i++) {
-            RoleEntity role = roles[i];
-            RoleDomain.Move(role, ctx.moduleInput.moveAxis);
+
+        RoleEntity role = roles[0];
+        RoleDomain.Move(role, ctx.moduleInput.moveAxis);
+
+        ModuleInput input = ctx.moduleInput;
+        if (input.isToggleBag) {
+            BagDomaim.Toggle(ctx.gameContext, role.bag);
         }
+
+
+
 
     }
 

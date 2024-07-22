@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ModuleInput {
     public Vector2 moveAxis;
+
+    public bool isToggleBag;
     public ModuleInput() { }
 
 
@@ -23,6 +25,9 @@ public class ModuleInput {
         }
         moveAxis.Normalize();
         this.moveAxis = moveAxis;
+
+        // ==== ui ====
+        isToggleBag = Input.GetKeyDown(KeyCode.B);
 
     }
 }
