@@ -10,6 +10,9 @@ public class BagItemModel {
     public int count;
 
     public int countMax;
+
+    //图标 
+    public Sprite icon;
     // 特性
     public bool idConsumable;
 

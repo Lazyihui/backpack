@@ -60,6 +60,14 @@ public class BagComponent {
 
     // 遍历物品
 
+    public void Foreach(Action<BagItemModel> callback) {
+        for (int i = 0; i < all.Length; i++) {
+            BagItemModel item = all[i];
+            if (item != null) {
+                callback.Invoke(item);
+            }
+        }
+    }
 
 
     public int GetOccupiedSlot() {
@@ -72,7 +80,7 @@ public class BagComponent {
         return count;
     }
 
-    public int GetEmptySlot() {
+    public int GetMaxSlot() {
         return all.Length;
     }
 

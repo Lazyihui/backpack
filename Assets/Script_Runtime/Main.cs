@@ -20,13 +20,9 @@ public class Main : MonoBehaviour {
         ctx.Inject(canvas);
 
 
-        RoleDomain.Spawn(ctx.gameContext, 1);
+        RoleEntity role = RoleDomain.Spawn(ctx.gameContext, 1);
 
-        UIApp.Panel_Bag_Opne(ctx.UIContext, 100);
-        // for (int i = 0; i < 10; i++) {
-        //     UIApp.Panel_BagElement_Add(ctx.UIContext, i, null, 5);
-        // }
-
+        BagDomaim.OpenBag(ctx.gameContext, role.bag);
         Binding();
     }
     void Binding() {
