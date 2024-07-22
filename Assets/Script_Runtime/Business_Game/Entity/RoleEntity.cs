@@ -16,6 +16,12 @@ public class RoleEntity : MonoBehaviour {
 
     }
 
+    public void Move(Vector2 dir) {
+        Vector2 pos = transform.position;
+        pos += dir;
+        transform.position = pos;
+    }
+
 
 
 }

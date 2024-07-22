@@ -9,12 +9,15 @@ public class Context {
 
     public GameContext gameContext;
 
+    public ModuleInput moduleInput;
+
     public Canvas canvas;
 
     public Context() {
         assets = new AssetsContext();
         UIContext = new UIContext();
         gameContext = new GameContext();
+        moduleInput = new ModuleInput();
     }
     public void Inject(Canvas canvas) {
         this.canvas = canvas;

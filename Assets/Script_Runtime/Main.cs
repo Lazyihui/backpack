@@ -33,8 +33,16 @@ public class Main : MonoBehaviour {
         };
     }
     void Update() {
+        ctx.moduleInput.Process();
+
+        int lenRole = ctx.gameContext.roleRespository.TakeAll(out RoleEntity[] roles);
+        for (int i = 0; i < lenRole; i++) {
+            RoleEntity role = roles[i];
+            RoleDomain.Move(role, ctx.moduleInput.moveAxis);
+        }
 
     }
+
     void OnDestory() {
         TearDown();
     }

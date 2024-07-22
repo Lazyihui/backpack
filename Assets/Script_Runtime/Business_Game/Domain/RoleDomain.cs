@@ -19,9 +19,13 @@ public static class RoleDomain {
 
         int occupiedSlot = entity.bag.GetOccupiedSlot();
         Debug.Log("RoleEntity Spawned, id:" + entity.id + " occupiedSlot:" + occupiedSlot);
-
+        ctx.roleRespository.Add(entity);
         return entity;
 
 
+    }
+
+    public static void Move(RoleEntity entity, Vector2 dir) {
+        entity.Move(dir);
     }
 }
