@@ -29,7 +29,10 @@ public static class BagDomaim {
 
 
         if (ctx.UIContext.panel_Bag == null) {
-            Debug.Log("刷新背包");
+            //关闭再打开就是刷新
+            UIApp.Bag_Close(ui);
+
+            UIApp.Panel_Bag_Opne(ui, bag.GetMaxSlot());
         }
     }
 
