@@ -22,6 +22,8 @@ public class Main : MonoBehaviour {
 
         RoleEntity role = RoleDomain.Spawn(ctx.gameContext, 1);
 
+        LootEntity loot = LootDomain.Spawn(ctx.gameContext);
+
         Binding();
     }
     void Binding() {
@@ -40,12 +42,12 @@ public class Main : MonoBehaviour {
 
         RoleEntity role = roles[0];
         RoleDomain.Move(role, ctx.moduleInput.moveAxis);
+        RoleDomain.ToTouchLoot(ctx.gameContext, role);
 
         ModuleInput input = ctx.moduleInput;
         if (input.isToggleBag) {
             BagDomaim.Toggle(ctx.gameContext, role.bag);
         }
-
 
 
 

@@ -35,6 +35,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Entities
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57fc6f5a7e1eec048a24dbc7546cc773
+    m_Address: LootEntity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Entities
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 617f26ae982655946867f687912cd4f9, type: 2}
   m_SchemaSet:

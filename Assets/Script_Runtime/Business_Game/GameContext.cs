@@ -10,8 +10,11 @@ public class GameContext {
 
     public RoleRespository roleRespository;
 
+    public LootRespository lootRespository;
+
     public GameContext() {
         roleRespository = new RoleRespository();
+        lootRespository = new LootRespository();
     }
 
     public void Inject(AssetsContext assets, UIContext UIContext) {

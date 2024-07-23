@@ -18,7 +18,8 @@ public static class RoleDomain {
         entity.Init(16);
 
         int occupiedSlot = entity.bag.GetOccupiedSlot();
-        Debug.Log("RoleEntity Spawned, id:" + entity.id + " occupiedSlot:" + occupiedSlot);
+
+
         ctx.roleRespository.Add(entity);
         return entity;
 
@@ -27,5 +28,31 @@ public static class RoleDomain {
 
     public static void Move(RoleEntity entity, Vector2 dir) {
         entity.Move(dir);
+    }
+
+
+    public static void ToTouchLoot(GameContext ctx, RoleEntity entity) {
+
+        int lenLoot = ctx.lootRespository.TakeAll(out LootEntity[] loots);
+        for (int i = 0; i < lenLoot; i++) {
+            LootEntity loot = loots[i];
+        
+            float disSqr = Vector2.SqrMagnitude(entity.transform.position - loot.transform.position);
+            if (disSqr < 1) {
+                Debug.Log("捡到物品" + loot.itemTyeID);
+            }
+        }
+
+
+
+    }
+
+    static void OntriggerEnter2D(RoleEntity entity, Collider2D other) {
+        Debug.Log("OntriggerEnter2D");
+        LootEntity loot = other.GetComponent<LootEntity>();
+        if (loot != null) {
+            Debug.Log("捡到物品" + loot.itemTyeID);
+        }
+
     }
 }
