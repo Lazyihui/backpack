@@ -36,4 +36,9 @@ public static class BagDomaim {
         }
     }
 
+    public static void OnUse(GameContext ctx, int id) {
+        // 找到主角
+        bool has = ctx.roleRespository.TryGet(0,out RoleEntity role);
+
+    }
 }
