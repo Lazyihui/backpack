@@ -15,11 +15,16 @@ public static class LootDomain {
         LootEntity entity = go.GetComponent<LootEntity>();
 
         entity.Ctor();
-        entity.id = 1;
+        entity.id = ctx.idService.lootIDRecord++;
         entity.itemTyeID = 1;
         entity.itemCount = 1;
 
         ctx.lootRespository.Add(entity);
         return entity;
+    }
+
+    public static void UnSpawn(GameContext ctx, LootEntity entity) {
+        ctx.lootRespository.Remove(entity);
+        GameObject.Destroy(entity.gameObject);
     }
 }

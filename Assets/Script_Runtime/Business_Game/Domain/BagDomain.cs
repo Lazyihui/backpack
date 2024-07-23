@@ -23,4 +23,14 @@ public static class BagDomaim {
             UIApp.Bag_Close(ui);
         }
     }
+
+    public static void UpdateBag(GameContext ctx, BagComponent bag) {
+        var ui = ctx.UIContext;
+
+
+        if (ctx.UIContext.panel_Bag == null) {
+            Debug.Log("刷新背包");
+        }
+    }
+
 }

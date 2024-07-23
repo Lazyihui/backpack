@@ -13,7 +13,7 @@ public static class RoleDomain {
 
         GameObject go = GameObject.Instantiate(prefab);
         RoleEntity entity = go.GetComponent<RoleEntity>();
-        entity.id = id;
+        entity.id = ctx.idService.roleIDRecord++;
         entity.Ctor();
         entity.Init(16);
 
@@ -36,15 +36,37 @@ public static class RoleDomain {
         int lenLoot = ctx.lootRespository.TakeAll(out LootEntity[] loots);
         for (int i = 0; i < lenLoot; i++) {
             LootEntity loot = loots[i];
-        
+
             float disSqr = Vector2.SqrMagnitude(entity.transform.position - loot.transform.position);
             if (disSqr < 1) {
                 Debug.Log("捡到物品" + loot.itemTyeID);
+                PickItem(ctx, entity, loot);
             }
         }
 
+    }
 
+    static void PickItem(GameContext ctx, RoleEntity entity, LootEntity loot) {
 
+        //添加到背包里
+        bool isPicked = entity.bag.AddItem(loot.itemTyeID, loot.itemCount, () => {
+            BagItemModel item = new BagItemModel();
+            item.id = ctx.idService.bagItemIDRecord++;
+            item.typeID = loot.itemTyeID;
+            item.count = loot.itemCount;
+            item.countMax = 99;
+            return item;
+        });
+
+        //移除物品
+
+        if (isPicked) {
+            LootDomain.UnSpawn(ctx, loot);
+        } else {
+            Debug.Log("背包已满");
+        }
+        // 如果背包是打开的，那么更新背包
+        BagDomaim.UpdateBag(ctx, entity.bag);
     }
 
     static void OntriggerEnter2D(RoleEntity entity, Collider2D other) {

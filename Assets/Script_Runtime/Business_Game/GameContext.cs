@@ -12,9 +12,12 @@ public class GameContext {
 
     public LootRespository lootRespository;
 
+    public IDService idService;
+
     public GameContext() {
         roleRespository = new RoleRespository();
         lootRespository = new LootRespository();
+        idService = new IDService();
     }
 
     public void Inject(AssetsContext assets, UIContext UIContext) {
